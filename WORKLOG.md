@@ -7,36 +7,31 @@
 ## 2026-02-05 01:27 - 项目初始化 + v1.1 代码开发（ESM-2 + BiLSTM）
 
 ### 变更
+
 - **文件**: `/home/lanty/Documents/study/model_k/AGENTS.md`
   - 创建项目文档，记录背景、架构、优化路线图
   - 新增"日志与记录（规则）"章节，确立双层记录体系
-  
 - **文件**: `/home/lanty/Documents/study/model_k/binary/v1.1_esm/model_train/train.py`
   - 新建：ESM-2 + BiLSTM 二分类训练脚本
   - 特性：支持分层学习率、Attention Pooling、早停机制
-  
 - **文件**: `/home/lanty/Documents/study/model_k/binary/v1.1_esm/model_test/predict.py`
   - 新建：批量预测脚本，支持单文件/目录批量处理
   - 输出：CSV 报告 + 预测的 FASTA 文件
-  
 - **文件**: `/home/lanty/Documents/study/model_k/multi/v1.1_esm/model_train/train.py`
   - 新建：ESM-2 + BiLSTM 多分类训练脚本
   - 特性：Focal Loss + Label Smoothing + WeightedRandomSampler
-  
 - **文件**: `/home/lanty/Documents/study/model_k/multi/v1.1_esm/model_test/classify.py`
   - 新建：批量分类脚本，支持 Top-3 预测输出
   - 输出：CSV 主报告 + JSON 详细报告
-  
 - **文件**: `binary/v1.1_esm/requirements.txt`, `multi/v1.1_esm/requirements.txt`
   - 新建：依赖列表（torch, transformers, biopython, scikit-learn 等）
-  
 - **文件**: `binary/v1.1_esm/README.md`, `multi/v1.1_esm/README.md`
   - 新建：各版本的使用说明和架构说明
-  
 - **文件**: `binary/v1.1_esm/run_train.sh`, `multi/v1.1_esm/run_train.sh`
   - 新建：一键训练启动脚本
 
 ### 实验
+
 - **数据**: 
   - ARG: `/home/lanty/Documents/study/model_k/data/ARG_db_all_seq_uniq_representative_rename_2_repsent.fasta` (17,345条)
   - 非ARG: 待准备（当前代码中需要配置 `NON_ARG_FILE`）
@@ -51,11 +46,12 @@
   - 尚未训练，代码已就绪
 
 ### 结论/下一步
+
 - **结论**: v1.1 版本代码开发完成，具备 ESM-2 集成、Attention Pooling、分层学习率等特性
 - **下一步**: 
-  1. 准备二分类的阴性样本数据（非ARG序列）
-  2. 运行多分类模型训练（数据已就绪）
-  3. 记录首次训练实验结果
+  准备二分类的阴性样本数据（非ARG序列）
+- 运行多分类模型训练（数据已就绪）
+- 记录首次训练实验结果
 
 ---
 

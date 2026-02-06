@@ -1,0 +1,41 @@
+name: arg_pred
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  # Python 版本
+  - python=3.10
+  
+  # PyTorch + CUDA (conda安装更稳定)
+  - pytorch>=2.0.0
+  - torchvision
+  - torchaudio
+  - pytorch-cuda=12.1  # 根据你的CUDA版本调整
+  
+  # 科学计算 (conda安装)
+  - numpy>=1.24.0
+  - pandas>=2.0.0
+  - scikit-learn>=1.3.0
+  - matplotlib>=3.7.0
+  - seaborn>=0.12.0
+  
+  # 生物信息 (bioconda频道)
+  - biopython>=1.81
+  
+  # 其他工具
+  - tqdm>=4.65.0
+  - pip
+  
+  # 可选：如果你需要运行对比工具
+  # - diamond  # 通过bioconda安装
+  # - mmseqs2  # 通过bioconda安装
+  
+  # pip安装的包
+  - pip:
+    # transformers 必须从pip安装（conda版本通常较旧）
+    - transformers>=4.30.0
+    - huggingface-hub
+    - accelerate  # 用于多GPU训练加速
