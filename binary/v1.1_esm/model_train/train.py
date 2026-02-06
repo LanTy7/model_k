@@ -30,11 +30,12 @@ from datetime import datetime
 from tqdm import tqdm
 
 # 设置日志
+os.makedirs('../logs', exist_ok=True)
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler(f'logs/train_{datetime.now().strftime("%Y%m%d_%H%M")}.log'),
+        logging.FileHandler(f'../logs/train_{datetime.now().strftime("%Y%m%d_%H%M")}.log'),
         logging.StreamHandler()
     ]
 )
