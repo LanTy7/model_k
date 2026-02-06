@@ -51,7 +51,7 @@ logger = logging.getLogger(__name__)
 class Config:
     """模型和训练配置"""
     # ESM-2 模型配置
-    ESM_MODEL_NAME = "facebook/esm2_t6_8M_UR50D"
+    ESM_MODEL_NAME = "facebook/esm2_t12_35M_UR50D"
     ESM_FREEZE_LAYERS = 4  # 冻结前 N 层
     MAX_LENGTH = 1000      # 最大序列长度
     
@@ -285,7 +285,7 @@ def load_and_preprocess_data(config):
 class ESM2FeatureExtractor(nn.Module):
     """ESM-2 特征提取器"""
     
-    def __init__(self, model_name="facebook/esm2_t6_8M_UR50D", freeze_layers=4):
+    def __init__(self, model_name="facebook/esm2_t12_35M_UR50D", freeze_layers=4):
         super().__init__()
         
         try:
