@@ -55,5 +55,47 @@
 
 ---
 
+## 2026-02-06 22:56 - Bug修复：训练脚本日志路径错误
+
+### 变更
+
+- **文件**: `/home/lanty/Documents/study/model_k/multi/v1.1_esm/model_train/train.py`
+  - 修复：日志保存路径从 `logs/` 改为 `../logs/`
+  - 添加：`os.makedirs('../logs', exist_ok=True)` 自动创建目录
+  - 原因：代码在 `model_train/` 目录运行，原相对路径导致 `FileNotFoundError`
+
+- **文件**: `/home/lanty/Documents/study/model_k/binary/v1.1_esm/model_train/train.py`
+  - 同上修复
+
+- **文件**: `/home/lanty/Documents/study/model_k/multi/v1.1_esm/run.sh`, `binary/v1.1_esm/run.sh`
+  - 创建：集群直接运行脚本（无需 SLURM）
+  - 功能：自动激活 conda 环境、后台运行、输出 PID 和日志路径
+
+- **文件**: `/home/lanty/Documents/study/model_k/multi/v1.1_esm/submit_job.sh`, `binary/v1.1_esm/submit_job.sh`
+  - 创建：SLURM 作业脚本（备用）
+
+- **文件**: `/home/lanty/Documents/study/model_k/environment.yml`, `multi/v1.1_esm/environment.yml`, `binary/v1.1_esm/environment.yml`
+  - 创建：Conda 环境配置文件，支持 CUDA 12.1
+
+### 实验
+
+- **数据**: 同上
+- **配置**: 
+  - 改为 `facebook/esm2_t12_35M_UR50D`（35M参数，平衡性能与速度）
+  - GPU: Tesla V100S 32GB，可用显存 ~24GB
+- **结果**: 
+  - 首次启动训练，因日志路径错误失败
+  - 修复后重新启动，训练进行中
+
+### 结论/下一步
+
+- **结论**: 日志路径 Bug 已修复，多分类模型训练已启动
+- **下一步**: 
+  - 监控训练日志，确认正常收敛
+  - 等待训练完成（预计 4-6 小时）
+  - 准备二分类阴性样本
+
+---
+
 *记录格式遵循 AGENTS.md 中的"日志与记录（规则）"章节*
 *注：修正日期错误，正确年份为 2026*
